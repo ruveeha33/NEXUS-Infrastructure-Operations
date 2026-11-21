@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+export COLORTERM=truecolor
+set -euo pipefail
+
+ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "$ROOT"
+
+PYTHON="$ROOT/.venv-nexus/bin/python"
+
+if [[ ! -x "$PYTHON" ]]; then
+    echo "NEXUS environment is not installed."
+    exit 1
+fi
+
+mkdir -p -m 700 "$ROOT/evidence"
+
+umask 077
+
+exec 9>"$ROOT/evidence/nexus-instance.lock"
+
+if ! flock -n 9; then
+    echo "========================================"
+    echo " NEXUS | INSTANCE PROTECTION"
+    echo "========================================"
+    echo "Another NEXUS session is already active."
+    echo "Close that session before launching again."
+    exit 1
+fi
+
+exec "$PYTHON" -m nexus_ui.app "$@"

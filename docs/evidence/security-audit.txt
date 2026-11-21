@@ -1,0 +1,31 @@
+========================================
+ LINUX OPERATIONS | SECURITY AUDIT
+========================================
+Timestamp: 2026-11-21T09:27:17+04:00
+User: local-operator
+
+[PASS] app/config.conf | Mode: 600
+[PASS] app/index.html | Mode: 644
+[PASS] app/public/index.html | Mode: 644
+[PASS] app/public | Mode: 755
+[PASS] app/logs | Mode: 750
+[PASS] app/logs/server.log | Mode: 640
+[PASS] app/logs/server.bak | Mode: 640
+[PASS] backups | Mode: 700
+[PASS] backups/index.html.bak | Mode: 600
+[PASS] evidence | Mode: 700
+[PASS] scripts/start.sh | Mode: 750
+[PASS] scripts/monitor.sh | Mode: 750
+[PASS] scripts/live-logs.sh | Mode: 750
+[PASS] scripts/security-audit.sh | Mode: 750
+
+WORLD-WRITABLE FILES
+----------------------------------------
+[PASS] No world-writable files detected
+
+AUDIT SUMMARY
+----------------------------------------
+Passed: 15
+Failed: 0
+Security status: PASS
+========================================

@@ -1,0 +1,215 @@
+Screen {
+    background: #0b141e;
+    color: #d9e7ef;
+}
+
+#nexus-brand {
+    height: 3;
+    padding: 1 2;
+    background: #162735;
+    color: #59dfc4;
+    text-style: bold;
+}
+
+#nexus-layout {
+    height: 1fr;
+}
+
+#navigation {
+    width: 29;
+    height: 100%;
+    background: #111e29;
+    border-right: solid #304856;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: #304856;
+}
+
+.navigation-group {
+    height: 2;
+    padding: 1 1 0 1;
+    color: #819eaf;
+    text-style: bold;
+}
+
+#navigation Button {
+    width: 100%;
+    min-width: 0;
+    height: 1;
+    margin: 0;
+    padding: 0 1;
+    background: #111e29;
+    color: #b8cedb;
+    border: none;
+    content-align: left middle;
+    text-align: left;
+    text-style: none;
+}
+
+#navigation Button:hover {
+    background: #25424b;
+    color: #59dfc4;
+}
+
+#navigation Button.selected {
+    background: #20443f;
+    color: #59dfc4;
+    text-style: bold;
+}
+
+#nav-footer {
+    height: 3;
+    padding: 1;
+    color: #819eaf;
+}
+
+#content {
+    width: 1fr;
+    height: 100%;
+    padding: 0 1;
+}
+
+#workspace {
+    height: 1fr;
+}
+
+#overview {
+    width: 2fr;
+    height: 100%;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+}
+
+#intelligence {
+    width: 1fr;
+    height: 100%;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+}
+
+#overview-heading {
+    height: 3;
+    padding: 1 0;
+    color: #e4edf3;
+    text-style: bold;
+}
+
+#health {
+    height: 5;
+    padding: 1 2;
+    background: #142b31;
+    border: round #345a5b;
+    margin-bottom: 1;
+}
+
+#resource-title {
+    height: 2;
+    color: #819eaf;
+    text-style: bold;
+}
+
+.metric {
+    height: 5;
+    margin-bottom: 1;
+    background: #162633;
+    border: round #304856;
+    padding: 0 1;
+}
+
+.metric-label {
+    height: 1;
+    color: #d9e7ef;
+    text-style: bold;
+}
+
+CompactGraph {
+    height: 2;
+    background: #162633;
+}
+
+#report {
+    height: auto;
+    min-height: 7;
+    padding: 1;
+    background: #142330;
+    border: round #304856;
+}
+
+#system {
+    height: auto;
+    min-height: 9;
+    margin: 0 0 1 0;
+    padding: 0 1;
+    background: #162633;
+    border: round #304856;
+}
+
+#traffic {
+    height: auto;
+    min-height: 8;
+    margin-bottom: 1;
+    padding: 0 1;
+    background: #162633;
+    border: round #304856;
+}
+
+#processes {
+    height: auto;
+    min-height: 11;
+    margin-bottom: 1;
+    padding: 0 1;
+    background: #162633;
+    border: round #304856;
+}
+
+#assurance {
+    height: auto;
+    min-height: 6;
+    padding: 0 1;
+    background: #142b31;
+    border: round #345a5b;
+    color: #b8cedb;
+}
+
+#operations {
+    height: 9;
+    display: none;
+    padding: 1;
+    background: #162633;
+}
+
+#operations Horizontal {
+    height: 3;
+}
+
+#operations Button {
+    width: 1fr;
+    margin-right: 1;
+    background: #20443f;
+    border: none;
+    color: #59dfc4;
+}
+
+#output {
+    height: 1fr;
+    padding: 1;
+    background: #0b141e;
+    border: round #304856;
+}
+
+#statusbar {
+    height: 1;
+    background: #162735;
+    color: #59dfc4;
+}
+
+#nexus-shortcuts {
+    height: 1;
+    background: #111e29;
+    color: #819eaf;
+}
+
+Footer {
+    background: #111e29;
+    color: #819eaf;
+}

@@ -1,0 +1,94 @@
+$canvas: #0a1119;
+$panel: #101d28;
+$surface: #142331;
+$border: #294451;
+$accent: #59dfc4;
+$foreground: #d9e7ef;
+$muted: #819eaf;
+$warning: #e4bb78;
+$danger: #ff7777;
+
+Screen {
+    background: $canvas;
+    color: $foreground;
+}
+
+Header {
+    background: $surface;
+    color: $accent;
+}
+
+Footer {
+    background: $panel;
+    color: $muted;
+}
+
+Button {
+    background: $surface;
+    color: $foreground;
+    border: none;
+    text-style: none;
+}
+
+Button:hover {
+    background: #1c3740;
+    color: $accent;
+}
+
+Button:focus {
+    text-style: bold;
+    color: $accent;
+}
+
+Button.-success {
+    background: #163c39;
+    color: $accent;
+}
+
+DataTable {
+    background: $panel;
+    color: $foreground;
+}
+
+DataTable > .datatable--header {
+    background: $surface;
+    color: $accent;
+    text-style: bold;
+}
+
+DataTable > .datatable--cursor {
+    background: #20434a;
+    color: $foreground;
+}
+
+RichLog {
+    background: $canvas;
+    color: $foreground;
+}
+
+Input {
+    background: $panel;
+    color: $foreground;
+    border: tall $border;
+}
+
+Input:focus {
+    border: tall $accent;
+}
+
+ListView {
+    background: $panel;
+}
+
+ListItem {
+    color: $foreground;
+}
+
+ListItem.-highlight {
+    background: #173e3e;
+    color: $accent;
+}
+
+Scrollbar {
+    color: $border;
+}

@@ -1,0 +1,49 @@
+name: Linux Operations Verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Initialize project
+        run: bash scripts/setup.sh
+
+      - name: Validate Bash scripts
+        run: |
+          for script in scripts/*.sh; do
+            bash -n "$script"
+          done
+
+      - name: Run acceptance suite
+        run: |
+          set -euo pipefail
+
+          ./scripts/ops.sh start &
+          PID=$!
+
+          trap 'kill "$PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..20}; do
+            if curl -fsS http://127.0.0.1:8095/ \
+                >/dev/null 2>&1; then
+              break
+            fi
+            sleep 1
+          done
+
+          curl -fsS http://127.0.0.1:8095/ >/dev/null
+
+          ./scripts/ops.sh backup
+          ./scripts/ops.sh verify
+          ./scripts/ops.sh audit

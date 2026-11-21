@@ -1,0 +1,204 @@
+Screen {
+    background: #0a1119;
+    color: #d9e7ef;
+}
+
+#nexus-brand {
+    height: 3;
+    padding: 1 2;
+    background: #101d28;
+    color: #59dfc4;
+    text-style: bold;
+}
+
+#nexus-layout {
+    height: 1fr;
+}
+
+#navigation {
+    width: 28;
+    height: 100%;
+    background: #101923;
+    border-right: solid #294451;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: #294451;
+    scrollbar-background: #101923;
+}
+
+.navigation-group {
+    height: 2;
+    padding: 1 1 0 1;
+    color: #819eaf;
+    text-style: bold;
+}
+
+#navigation Button {
+    width: 100%;
+    min-width: 0;
+    height: 1;
+    margin: 0;
+    padding: 0 1;
+    background: #101923;
+    color: #b8cedb;
+    border: none;
+    content-align: left middle;
+    text-style: none;
+}
+
+#navigation Button:hover {
+    background: #1c3740;
+    color: #59dfc4;
+}
+
+#navigation Button.selected {
+    background: #173e3e;
+    color: #59dfc4;
+    text-style: bold;
+}
+
+#nav-footer {
+    height: 3;
+    padding: 1;
+    color: #819eaf;
+}
+
+#content {
+    width: 1fr;
+    height: 100%;
+    padding: 0 1;
+}
+
+#workspace {
+    height: 1fr;
+}
+
+#overview {
+    width: 2fr;
+    height: 100%;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+}
+
+#intelligence {
+    width: 1fr;
+    height: 100%;
+    padding: 0 1;
+    scrollbar-size-vertical: 1;
+}
+
+#overview-heading {
+    height: 3;
+    padding: 1 0;
+    color: #d9e7ef;
+    text-style: bold;
+}
+
+#health {
+    height: 4;
+    padding: 0 1;
+    background: #101d28;
+    border: round #294451;
+    margin-bottom: 1;
+}
+
+#resource-title {
+    height: 1;
+    color: #819eaf;
+    text-style: bold;
+}
+
+.metric {
+    height: 6;
+    margin-bottom: 1;
+    background: #101d28;
+    border: round #294451;
+    padding: 0 1;
+}
+
+.metric-label {
+    height: 1;
+    color: #59dfc4;
+}
+
+ResourceGraph {
+    height: 1fr;
+}
+
+#report {
+    height: auto;
+    min-height: 6;
+    padding: 1;
+    background: #101d28;
+    border: round #294451;
+}
+
+#system {
+    height: 10;
+    margin: 3 0 1 0;
+    padding: 1;
+    background: #101d28;
+    border: round #294451;
+}
+
+#traffic {
+    height: 11;
+    margin-bottom: 1;
+    padding: 1;
+    background: #101d28;
+    border: round #294451;
+}
+
+#processes {
+    height: 14;
+    margin-bottom: 1;
+    padding: 1;
+    background: #101d28;
+    border: round #294451;
+}
+
+#assurance {
+    height: auto;
+    min-height: 6;
+    padding: 1;
+    background: #101d28;
+    border: round #294451;
+    color: #819eaf;
+}
+
+#operations {
+    height: 9;
+    display: none;
+    padding: 1;
+    background: #101d28;
+}
+
+#operations Horizontal {
+    height: 3;
+}
+
+#operations Button {
+    width: 1fr;
+    margin-right: 1;
+    background: #163c39;
+    border: none;
+    color: #59dfc4;
+}
+
+#output {
+    height: 1fr;
+    padding: 1;
+    background: #0a1119;
+    border: round #294451;
+}
+
+#statusbar {
+    height: 1;
+    background: #142331;
+    color: #59dfc4;
+}
+
+Footer {
+    background: #101923;
+    color: #819eaf;
+}

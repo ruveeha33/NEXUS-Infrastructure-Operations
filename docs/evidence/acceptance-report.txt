@@ -1,0 +1,72 @@
+========================================
+ DECODELABS | ACCEPTANCE TEST SUITE
+========================================
+Timestamp: 2026-11-21T09:27:17+04:00
+Version: 1.0.0
+
+01 | FILESYSTEM VALIDATION
+[PASS] Application directory exists
+[PASS] Public directory exists
+[PASS] Log directory exists
+[PASS] Backup directory exists
+[PASS] Evidence directory exists
+[PASS] Scripts directory exists
+[PASS] Application file populated
+[PASS] Configuration populated
+[PASS] Operational logs populated
+[PASS] Original log backup exists
+[PASS] Public application matches source
+[PASS] Original HTML backup matches source
+
+02 | CONFIGURATION VALIDATION
+[PASS] Application name configured
+[PASS] Application version configured
+[PASS] Development environment configured
+[PASS] Localhost binding configured
+[PASS] Application port configured
+
+03 | APPLICATION AND NETWORK
+[PASS] HTTP health check returns 200
+[PASS] Correct application content served
+[PASS] Missing resource returns 404
+[PASS] Configuration not exposed
+[PASS] Server logs not exposed
+[PASS] Backup files not exposed
+[PASS] Listening socket restricted to localhost
+
+04 | SCRIPT VALIDATION
+[PASS] Syntax: scripts/backup.sh
+[PASS] Executable: scripts/backup.sh
+[PASS] Syntax: scripts/live-logs.sh
+[PASS] Executable: scripts/live-logs.sh
+[PASS] Syntax: scripts/monitor.sh
+[PASS] Executable: scripts/monitor.sh
+[PASS] Syntax: scripts/ops.sh
+[PASS] Executable: scripts/ops.sh
+[PASS] Syntax: scripts/recovery-test.sh
+[PASS] Executable: scripts/recovery-test.sh
+[PASS] Syntax: scripts/security-audit.sh
+[PASS] Executable: scripts/security-audit.sh
+[PASS] Syntax: scripts/setup.sh
+[PASS] Executable: scripts/setup.sh
+[PASS] Syntax: scripts/start.sh
+[PASS] Executable: scripts/start.sh
+[PASS] Syntax: scripts/verify.sh
+[PASS] Executable: scripts/verify.sh
+[PASS] Operations CLI available
+[PASS] Security audit passes
+
+05 | BACKUP AND RECOVERY
+[PASS] Latest backup integrity verified
+[PASS] Isolated recovery succeeds
+
+========================================
+ FINAL ACCEPTANCE REPORT
+========================================
+Total tests : 46
+Passed      : 46
+Failed      : 0
+Pass rate   : 100%
+Status      : ALL TESTS PASSED
+Release     : ACCEPTED
+========================================

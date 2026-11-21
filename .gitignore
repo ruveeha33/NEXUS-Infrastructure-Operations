@@ -1,0 +1,37 @@
+# Local configuration
+app/config.conf
+.env
+.env.*
+*.pem
+*.key
+
+# Runtime logs
+app/logs/
+*.log
+*.pid
+
+# Generated files
+app/public/
+/backups/
+/evidence/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# NEXUS development runtime
+.venv-nexus/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local NEXUS patch backups
+*.backup_*
