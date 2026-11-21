@@ -87,3 +87,64 @@ def test_checksum(tmp_path):
         "ba7816bf8f01cfea414140de5dae2223"
         "b00361a396177a9cb410ff61f20015ad"
     )
+
+
+def test_workstation_optional_web_independence():
+    result = reports.workstation_assessment(
+        {"passed": True},
+        {
+            "total": 5, "detected": 5,
+            "recovered": 5, "invalid_records": 0,
+        },
+        {"archive_count": 1},
+        {
+            "available": True,
+            "local": {"dirty": False},
+            "summary": {"exact_commit_success": True},
+        },
+    )
+    assert result["local_status"] == "PASSED"
+    assert result["release_status"] == "CI MATCH FOUND"
+
+
+def test_workstation_rejects_missing_evidence():
+    result = reports.workstation_assessment(
+        {"passed": True},
+        {
+            "total": 0, "detected": 0,
+            "recovered": 0, "invalid_records": 0,
+        },
+        {"archive_count": 0},
+        {"available": False},
+    )
+    assert result["release_status"] == "NOT READY"
+
+
+def test_workstation_rejects_security_failure():
+    result = reports.workstation_assessment(
+        {"passed": False},
+        {
+            "total": 1, "detected": 1,
+            "recovered": 1, "invalid_records": 0,
+        },
+        {"archive_count": 1},
+        {"available": False},
+    )
+    assert result["release_status"] == "NOT READY"
+
+
+def test_workstation_requires_matching_ci():
+    result = reports.workstation_assessment(
+        {"passed": True},
+        {
+            "total": 1, "detected": 1,
+            "recovered": 1, "invalid_records": 0,
+        },
+        {"archive_count": 1},
+        {
+            "available": True,
+            "local": {"dirty": False},
+            "summary": {"exact_commit_success": False},
+        },
+    )
+    assert result["release_status"] == "NOT VERIFIED"

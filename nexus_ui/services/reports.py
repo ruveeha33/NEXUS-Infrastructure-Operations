@@ -289,6 +289,69 @@ def release_assessment(
     }
 
 
+
+def workstation_assessment(security, incidents, backups, pipeline):
+    """Assess NEXUS separately from the optional HTTP lab."""
+    failures = []
+
+    if not security.get("passed", False):
+        failures.append("Security audit did not pass")
+
+    if incidents.get("invalid_records", 0):
+        failures.append("Invalid incident evidence exists")
+
+    if not incidents.get("total", 0):
+        failures.append("No incident evidence recorded")
+    elif (
+        incidents.get("recovered") != incidents.get("total")
+        or incidents.get("detected") != incidents.get("total")
+    ):
+        failures.append("Incident evidence is not fully recovered")
+
+    if not backups.get("archive_count", 0):
+        failures.append("No backup archive recorded")
+
+    if failures:
+        return {
+            "local_status": "REVIEW REQUIRED",
+            "release_status": "NOT READY",
+            "reason": "; ".join(failures),
+        }
+
+    if not pipeline.get("available"):
+        return {
+            "local_status": "PASSED",
+            "release_status": "NOT VERIFIED",
+            "reason": "Remote CI data unavailable",
+        }
+
+    local = pipeline.get("local") or {}
+    summary = pipeline.get("summary") or {}
+
+    if local.get("dirty", True):
+        return {
+            "local_status": "PASSED",
+            "release_status": "DEVELOPMENT",
+            "reason": "Uncommitted working tree changes",
+        }
+
+    if not summary.get("exact_commit_success", False):
+        return {
+            "local_status": "PASSED",
+            "release_status": "NOT VERIFIED",
+            "reason": "No successful matching-commit CI run",
+        }
+
+    return {
+        "local_status": "PASSED",
+        "release_status": "CI MATCH FOUND",
+        "reason": (
+            "Matching-commit CI found; final release "
+            "approval requires separate review"
+        ),
+    }
+
+
 def markdown_report(data):
 
     system = data["system"]
@@ -319,6 +382,11 @@ def markdown_report(data):
         f"- Memory utilization: {system['memory_percent']}%",
         f"- Disk utilization: {system['disk_percent']}%",
         f"- Process count: {system['process_count']}",
+        "",
+        "## Optional Linux Operations Web Lab",
+        "",
+        f"- Legacy lab assessment: {data['web_lab_release']['release_status']}",
+        f"- Legacy lab reason: {data['web_lab_release']['reason']}",
         "",
         "## Application Availability",
         "",
@@ -444,10 +512,17 @@ def generate_report(emit=print, destination=REPORTS):
     pipeline.pop("error", None)
     pipeline.pop("remote_error", None)
 
-    release = release_assessment(
+    web_lab_release = release_assessment(
         health,
         security,
         acceptance,
+        pipeline,
+    )
+
+    release = workstation_assessment(
+        security,
+        incidents,
+        backups,
         pipeline,
     )
 
@@ -461,6 +536,7 @@ def generate_report(emit=print, destination=REPORTS):
         "incidents": incidents,
         "pipeline": pipeline,
         "release": release,
+        "web_lab_release": web_lab_release,
     }
 
     emit("[ASSESS] " + release["release_status"])

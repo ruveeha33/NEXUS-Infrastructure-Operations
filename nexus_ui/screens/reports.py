@@ -380,14 +380,29 @@ class ReportsScreen(Screen):
             self.write(f"{key}: {value}")
 
         self.write("")
+        self.write("OPTIONAL WEB LAB", "#40dfb7")
+
+        web_lab = data.get("web_lab_release", {})
+
+        self.write(
+            "Legacy lab release: "
+            + web_lab.get("release_status", "NOT ASSESSED")
+        )
+
+        self.write(
+            web_lab.get("reason", "No legacy lab assessment"),
+            "#e5bb72",
+        )
+
+        self.write("")
         self.write("OPERATIONAL VERIFICATION", "#40dfb7")
 
         checks = {
-            "Application online":
+            "Optional web application online":
                 data["application"].get("online"),
             "Security audit":
                 data["security"]["passed"],
-            "Acceptance tests":
+            "Optional web-lab acceptance tests":
                 data["acceptance"]["passed"],
         }
 
