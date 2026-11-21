@@ -10,10 +10,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[2]
 
-REPOSITORY = (
-    "HaziqBinAfzal/"
-    "DevOps-Project-01-Linux-Fundamentals"
-)
+REPOSITORY = "ruveeha33/NEXUS-Infrastructure-Operations"
 
 FIELDS = ",".join([
     "databaseId",
