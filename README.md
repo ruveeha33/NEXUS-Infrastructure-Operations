@@ -2,69 +2,108 @@
 
 # NEXUS
 
-### Infrastructure Operations Workstation
+### INFRASTRUCTURE OPERATIONS WORKSTATION
 
-**OBSERVE · INVESTIGATE · OPERATE · VERIFY**
+**Observe the system. Investigate the signal. Operate with intent. Verify the outcome.**
 
-An interactive Linux engineering workstation for infrastructure visibility, operational investigation, controlled practice, and evidence-driven verification.
+A terminal-native Linux engineering workstation that brings system intelligence, controlled service operations, incident exercises, CI/CD visibility, and verifiable evidence into one cohesive interface.
 
-![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white) ![Textual](https://img.shields.io/badge/Interface-Textual-1C2634) ![Platform](https://img.shields.io/badge/Platform-Ubuntu%20%7C%20WSL2-555555?logo=ubuntu&logoColor=white) ![Tests](https://img.shields.io/badge/Local%20tests-71%20passed-238636) [![NEXUS CI](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml/badge.svg)](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml)
+[![NEXUS CI](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml/badge.svg)](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml)
+[![Linux verification](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/verify.yml/badge.svg)](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/verify.yml)
+![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)
+![UI](https://img.shields.io/badge/UI-Textual-132A38)
+![OS](https://img.shields.io/badge/Ubuntu%20%7C%20WSL2-Local%20workstation-30363D?logo=ubuntu&logoColor=white)
+
+[Explore capabilities](#the-workstation) · [Architecture](#how-it-works) · [Get started](#get-started) · [Verification](#quality--verification) · [Security](#safety--scope)
 
 </div>
 
 ---
 
-## Overview
+## Engineering operations, in one terminal
 
-**NEXUS** brings essential Linux infrastructure operations into a unified terminal-based interface. Built with **Python, Textual, Bash, and system telemetry**, it combines inspection, monitoring, operational exercises, incident analysis, and reporting in a single local workstation.
+Linux operations are rarely one task. An engineer moves between process inspection, network visibility, service health, incident investigation, command-line work, and proof that an action achieved its intended result.
 
-It is designed as a **hands-on engineering and learning environment**: an approachable way to explore operational workflows while retaining clear boundaries between observation, simulation, and actions on the local host.
+**NEXUS** unifies those activities in a keyboard-driven **Textual** interface, backed by Python services and a preserved Bash-based Linux operations lab. Its goal is not to replace production observability or orchestration platforms; it is to make practical infrastructure engineering **visible, repeatable, and explainable** in a local learning environment.
 
-> **Scope:** NEXUS is a local educational and development workstation—not a production infrastructure management platform or a remotely exposed administration service.
+> **Design principle:** Distinguish what the system *observes*, what the lab *simulates*, what an operator *requests*, and what the evidence *verifies*.
 
-## What NEXUS Includes
+## At a glance
 
-| Workspace / capability | Purpose |
-| --- | --- |
-| **Infrastructure control** | Explore local operational and service-management workflows. |
-| **System inspection** | Inspect processes, filesystem information, and network context. |
-| **Telemetry** | Review system and infrastructure signals within the terminal interface. |
-| **Incident workspace** | Investigate simulated incidents and related operational findings. |
-| **Pipeline analysis** | Examine pipeline-oriented workflows and their results. |
-| **Evidence and reports** | Generate and review operational reports and archived evidence. |
-| **Linux knowledge and mastery** | Practice and reinforce foundational Linux engineering concepts. |
-| **Restricted command lab** | Work with Linux commands inside the application's defined restrictions. |
-| **SSH practice** | Explore local SSH learning scenarios. |
-| **Operations toolkit** | Use supporting Bash scripts for setup, monitoring, verification, backup, recovery, and security checks. |
+| | |
+| :--- | :--- |
+| **Interface** | Python + Textual terminal UI with dedicated workspaces |
+| **Signals** | Host telemetry, process, filesystem, and network inspection |
+| **Operations** | Scoped management of the companion Linux Operations Lab service |
+| **Investigation** | Incident exercises, CI/CD run inspection, and report generation |
+| **Practice** | Linux knowledge, command exercises, and local SSH mission |
+| **Assurance** | Automated regression tests and two GitHub Actions workflows |
 
-## Architecture
+## The workstation
 
-```text
-NEXUS
-├── Textual terminal interface       nexus_ui/app.py
-│   ├── Workspaces                  nexus_ui/screens/
-│   ├── Operational services        nexus_ui/services/
-│   ├── Themes and visual elements  nexus_ui/themes/ + widgets/
-│   └── Linux learning workflows
-├── Bash operations toolkit         scripts/
-├── Original local web application  app/
-├── Automated regression tests      tests/nexus/
-└── GitHub Actions verification     .github/workflows/
+| Workspace | What you can explore |
+| :--- | :--- |
+| **Infrastructure dashboard** | Live-oriented system telemetry and operational overview, including resource history visualizations |
+| **System inspector** | Processes, filesystem metadata, network connections, interfaces, repository information, and commit history |
+| **Operational control** | View the lab service's health and process ownership; explicitly confirm start, stop, and restart actions; inspect operation history and backups |
+| **Incident intelligence** | Work through simulated operational incidents and inspect their findings |
+| **Pipeline intelligence** | Read GitHub Actions workflow results, run history, outcomes, and durations; refresh on demand |
+| **Engineering assurance** | Generate local engineering reports, review archived reports, and verify SHA-256 integrity |
+| **Linux knowledge & mastery** | Explore Linux concepts and structured engineering exercises |
+| **Restricted command lab** | Practice Linux commands within application-defined restrictions |
+| **SSH engineering** | Run a local OpenSSH training mission using temporary keys and a managed server lifecycle |
+
+The interface is complemented by Bash tools for monitoring, verification, backup, isolated recovery testing, and security auditing.
+
+### A look inside
+
+> **Screenshot slot:** A real terminal capture of the NEXUS dashboard will go here. The repository intentionally does not use a fabricated product screenshot.
+
+For the best visual introduction, capture NEXUS running at a wide terminal size and add an image at `docs/images/nexus-dashboard.png`, then replace this note with:
+
+```markdown
+![NEXUS infrastructure dashboard](docs/images/nexus-dashboard.png)
 ```
 
-The **Textual UI** organizes operator-facing workflows; the **Python service modules** implement their supporting logic; and the **Bash scripts** retain the original Linux operations exercises. The companion web application is served locally and is separate from the terminal workstation.
+## How it works
 
-For the underlying Linux lab architecture, see [Technical Architecture](docs/ARCHITECTURE.md). For foundational commands, see [Linux Commands](docs/LINUX-COMMANDS.md).
+```text
+                         ┌───────────────────────────┐
+                         │     NEXUS / Textual       │
+                         │  terminal workspaces      │
+                         └─────────────┬─────────────┘
+                                       │
+                 ┌─────────────────────┼─────────────────────┐
+                 │                     │                     │
+       ┌─────────▼──────────┐ ┌────────▼─────────┐ ┌────────▼──────────┐
+       │ Host intelligence  │ │ Operational lab  │ │ Engineering       │
+       │ telemetry, process │ │ scoped service   │ │ evidence, reports │
+       │ filesystem, network│ │ control, Bash    │ │ CI/CD, SSH mission│
+       └────────────────────┘ └────────┬─────────┘ └───────────────────┘
+                                      │
+                            ┌─────────▼──────────┐
+                            │ Local companion    │
+                            │ web application    │
+                            │ 127.0.0.1:8095     │
+                            └────────────────────┘
+```
 
-## Quick Start
+**Separation of responsibilities**
 
-### Requirements
+- `nexus_ui/screens/` presents the workspaces and interactions.
+- `nexus_ui/services/` collects data and implements supporting operations.
+- `nexus_ui/themes/` and `nexus_ui/widgets/` define the terminal presentation.
+- `scripts/` preserves the original Linux operations toolkit.
+- `app/` contains the separate, local companion web application.
+- `tests/nexus/` and `.github/workflows/` provide regression and CI checks.
 
-- **Ubuntu Linux** or **Ubuntu on WSL2**
-- **Python 3.14** available as `python3.14`
-- **Bash** and **Git**
+See [Technical Architecture](docs/ARCHITECTURE.md) and [Linux Command Reference](docs/LINUX-COMMANDS.md).
 
-### Install
+## Get started
+
+**Prerequisites:** Ubuntu Linux or Ubuntu under WSL2, Python **3.14** available as `python3.14`, Bash, Git, and a terminal with modern color support. Some exercises require local utilities such as OpenSSH; availability and permissions depend on the host environment.
+
+### 1. Clone and prepare
 
 ```bash
 git clone https://github.com/ruveeha33/NEXUS-Infrastructure-Operations.git
@@ -75,73 +114,86 @@ python3.14 -m venv .venv-nexus
 .venv-nexus/bin/python -m pip install -r requirements-nexus.txt
 ```
 
-### Launch the workstation
+### 2. Launch NEXUS
 
 ```bash
 ./nexus
 ```
 
-The launcher expects the `.venv-nexus` environment, starts the Textual application, and uses a local instance lock to prevent overlapping sessions.
+The launcher starts the Textual application from `.venv-nexus` and uses a local instance lock to prevent overlapping sessions.
 
-### Run the original web application
+### 3. Optional: run the companion web lab
 
 ```bash
 bash scripts/ops.sh start
 ```
 
-Open **http://127.0.0.1:8095/** on the same machine. The development web server is intended for local use only.
+Open **http://127.0.0.1:8095/** locally. This web lab is a separate component; NEXUS itself is a terminal application.
 
-## Testing and Verification
-
-Run the NEXUS regression suite:
+### 4. Run the regression suite
 
 ```bash
 .venv-nexus/bin/python -m pytest tests/nexus -q
 ```
 
-**Verified publication baseline:** 71 automated tests passed locally, and the [NEXUS Infrastructure CI workflow](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/runs/44937454821) completed successfully for commit `f0b4869`.
+## Quality & verification
 
-GitHub Actions includes a dedicated **Python 3.14 NEXUS test workflow**, alongside the original Linux verification workflow. The NEXUS workflow checks source compilation, launcher syntax, regression tests, and repository hygiene.
+The published baseline passed **71/71 local regression tests**. Both GitHub-hosted workflows also completed successfully after the README update at commit [`9744b81`](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/commit/9744b81).
 
-[![NEXUS CI](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml/badge.svg)](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml)
+| Workflow | Verification | Result |
+| :--- | :--- | :--- |
+| [NEXUS Infrastructure CI](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/nexus-ci.yml) | Python 3.14 dependencies, compilation, launcher syntax, NEXUS regression suite, repository hygiene | **Passed** |
+| [Linux Operations Verification](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/workflows/verify.yml) | Original Linux lab verification workflow | **Passed** |
 
-## Security and Operational Boundaries
+**Evidence:** [NEXUS CI run](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/runs/44937976137) · [Linux verification run](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions/runs/44937976220)
 
-NEXUS is designed for **local educational use**. Its command-practice environment is restricted, but that should not be interpreted as a substitute for host-level isolation or security review. Review operational commands and their effects before running them on a machine containing important data.
+CI success confirms that the automated checks passed in their tested environment. It does not establish production readiness or guarantee that every privileged local operation will work on every machine.
 
-- Do **not** expose the development HTTP server to the public internet.
-- Keep local configuration, credentials, runtime logs, evidence, and virtual environments out of version control.
-- Treat configuration files used by Bash tooling as **trusted local inputs**.
-- Review permissions and operational scripts before use.
+## Safety & scope
 
-See [SECURITY.md](SECURITY.md) for additional project security guidance.
+NEXUS is a **single-host educational and development workstation**. It is not a production control plane, a remote administration platform, or a security isolation boundary.
 
-## Repository Guide
+- **Observation vs. action:** Inspection and pipeline views are distinct from operations that change local lab state.
+- **Scoped service control:** The operational control workspace targets the companion Linux Operations Lab service and requires confirmation for disruptive actions.
+- **Command restrictions:** The Linux command lab applies application-defined restrictions; do not treat them as equivalent to OS-level sandboxing.
+- **SSH practice:** The SSH mission uses a local training lifecycle; review host prerequisites and permissions before running it.
+- **Local-only web service:** Do not expose the development HTTP server to the internet.
+- **Private local artifacts:** Keep credentials, configuration, logs, evidence, and virtual environments outside Git.
 
-| Path | Contents |
-| --- | --- |
-| `nexus` | NEXUS launcher and single-instance protection |
-| `nexus_ui/screens/` | Interactive terminal workspaces |
-| `nexus_ui/services/` | Operational logic and telemetry services |
-| `nexus_ui/themes/` | Textual styling |
-| `scripts/` | Linux operations and verification scripts |
-| `app/` | Original local web application |
-| `tests/nexus/` | NEXUS automated regression tests |
-| `docs/` | Technical documentation and lab evidence |
-| `.github/workflows/` | Automated verification workflows |
+Review [SECURITY.md](SECURITY.md) before using operational features.
 
-## Project Background
+## Repository map
 
-NEXUS extends the **DecodeLabs Linux Operations Lab**, preserving its original Bash operations toolkit and companion web application while adding a terminal-based infrastructure workstation, supporting Python services, and dedicated automated tests.
+```text
+NEXUS-Infrastructure-Operations/
+├── nexus                    # Terminal launcher
+├── nexus_ui/
+│   ├── app.py               # Workstation application
+│   ├── screens/             # Operator workspaces
+│   ├── services/            # Supporting engineering logic
+│   ├── themes/              # Textual styling
+│   └── widgets/             # Reusable UI elements
+├── scripts/                 # Bash operations toolkit
+├── app/                     # Companion local web lab
+├── tests/nexus/             # Automated regression tests
+├── docs/                    # Architecture and learning docs
+├── .github/workflows/       # CI and Linux verification
+├── requirements-nexus.txt   # Pinned Python dependencies
+└── README.md
+```
 
-The project demonstrates foundational Linux and DevOps engineering practices in a reproducible, local learning environment.
+## Project lineage
+
+NEXUS extends the **DecodeLabs Linux Operations Lab**. The original Bash operations toolkit and local web application are retained; NEXUS adds the interactive terminal workstation, Python service layer, learning and investigation workspaces, and dedicated regression tests.
+
+This repository is presented as a practical Linux and DevOps engineering project. Its design emphasizes operator understanding, traceable outcomes, and reproducible local verification.
 
 ---
 
 <div align="center">
 
-**NEXUS — Observe. Investigate. Operate. Verify.**
+**NEXUS** · *Observe. Investigate. Operate. Verify.*
 
-[Source Code](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations) · [CI Results](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions) · [Architecture](docs/ARCHITECTURE.md)
+[Repository](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations) · [Actions](https://github.com/ruveeha33/NEXUS-Infrastructure-Operations/actions) · [Architecture](docs/ARCHITECTURE.md) · [Security](SECURITY.md)
 
 </div>
